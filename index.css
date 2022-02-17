@@ -233,6 +233,11 @@ button {
     width: calc(100% - 100px);
     margin: 0 40px;
   }
+  .body .main {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .body.fixed .header {
   height: 50px;

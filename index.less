@@ -83,7 +83,8 @@ body, h1, h2, h3, h4, h5, h6, p, select, input, textarea, button { font-family: 
     .header { width: calc(100% - 20px); height: fit-content; padding: 10px 10px 0 10px; display: flex; align-items: center; justify-content: space-between;
         .img { width: 20px; height: 20px; }}
     .main   { padding: 20px; display: flex; flex-direction: column; align-items: center; overflow-y: auto; }
-    @media @sD, @sT { .header, .main { width: calc(100% - 100px); margin: 0 40px; }}
+    @media @sD, @sT { .header, .main { width: calc(100% - 100px); margin: 0 40px; }
+        .main { max-width: 400px; margin-left: auto; margin-right: auto; }}
     &.fixed {
         .header { height: 50px; padding: 0 10px; z-index: 1; position: fixed; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0px 10px 20px rgba(55, 84, 170, 0.1); }
         .main   { padding: 70px 20px 40px; }}
