@@ -1016,8 +1016,10 @@ body {
   color: #333F48;
 }
 .body #main.ipassGet .Note {
+  width: 100%;
   padding: 0 13px;
   margin-bottom: 61px;
+  box-sizing: border-box;
 }
 .body #main.ipassGet .Note span {
   color: #333;
