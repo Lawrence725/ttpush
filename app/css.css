@@ -1017,6 +1017,7 @@ body {
 }
 .body #main.ipassGet .Note {
   padding: 0 13px;
+  margin-bottom: 61px;
 }
 .body #main.ipassGet .Note span {
   color: #333;
@@ -1053,7 +1054,7 @@ body {
 .body #main.ipassGet .flexH {
   width: 100%;
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   left: 0;
 }
