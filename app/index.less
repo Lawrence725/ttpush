@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    /* Font */
+    // --fXXL: clamp(1.9rem, 10vw, 2.0rem);
+    // --fXL:  clamp(1.4rem, 6vw, 1.5rem);
+    // --fL:   clamp(1.2rem, 5vw, 1.3rem);
+    // --fM:   clamp(1rem, 4vw, 1.2rem);
+    // --fS:   clamp(0.8rem, 3vw, 0.9rem);
+    // --fXS:  clamp(0.6rem, 3vw, 0.7rem);
+    --fXXL: 1.9rem;
+    --fXL:  1.4rem;
+    --fL:   1.2rem;
+    --fM:   1rem;
+    --fS:   0.8rem;
+    --fXS:  0.6rem;
+
+    /* Color 
+    ***** 自訂顏色說明 *****
+    k1: 主色 (建議深色)
+    k2: 底色 (建議k1接近白色)
+    k3: 特殊色 (測試中) */
+    --k3: #FFFFFF;
+    /* QC */
+    --q1: #FF9900;
+    --q1a:#FFEED8;
+    --q2: #22798C;
+    --q3: #96BE0B;
+    --q3a:#EAF2CE;
+    --k1:     #E85189;
+    --k2:     #FFF2F7;
+    --cG1:    #333333;
+    --cG2:    #4F4F4F;
+    --cG3:    #828282;
+    --cG4:    #BDBDBD;
+    --cG5:    #E0E0E0;
+    --cG6:    #F2F2F2;
+    --cBg:    #F2F1F6;
+    --cRed:   #EB5757;
+    --cGreen: #27AE60;
+    --cOrange:#FF9900;
+    --cBlue:  #5CB8B2;
+}
+
+/* Reset */
+*                                       { margin: 0; padding: 0;
+    &:visited                           { color: inherit; }}
+html, body                              { overscroll-behavior-x: none; }
+span, p, h1, h2, h3, h4, h5, h6, a,
+select, input, textarea, button, ol, ul { font-size: var(--fM); font-family: 'Noto Sans TC', 'Roboto', 'Arial', '微軟正黑體'; }
+span, p, h1, h2, h3, h4, h5, h6,
+input, textarea, ol, ul                 { color: var(--cG1); overflow-wrap: anywhere; }
+a                                       { color: inherit; text-decoration: none !important; }
+a:hover                                 { cursor: pointer; }
+button                                  { border: none; }
+button:hover                            { cursor: pointer; }
+input                                   { border: 0; padding: 0; background-color: transparent; }
+input:focus                             { box-shadow: none !important; outline: none; }
+input:-webkit-autofill                  { color: var(--k1) !important; background-color: transparent !important; box-shadow: 0 0 0px 1000px white inset !important; background-clip: content-box !important; }
+textarea                                { border: 0; resize: none; }
+textarea:focus                          { box-shadow: none !important; outline: none; }
+select                                  { -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; border: 0; }
+select:hover                            { cursor: pointer; }
+img                                     { object-fit: cover; }
+i                                       { text-decoration: none !important; }
+iframe                                  { border: 0; }
+*, :after, :before                      { box-sizing: border-box !important; -webkit-box-sizing: border-box; }
+
+/* Components */
+.disabled   { color: var(--cG4) !important; filter: grayscale(100%); opacity: 0.5; pointer-events: none;
+    *       { color: var(--cG4) !important; }
+    img     { filter: grayscale(100%); opacity: 0.5; }}
+.loading { top: 0; left: 0; width: 100vw; height: 100vh; position: fixed; display: flex; align-items: center; justify-content: center; z-index: 9; background-color: rgba(0,0,0,0.9);
+    &.transparent { background-color: transparent; pointer-events: none; }
+    &.bg { background-color: black; }
+    &.loading--body { width: 100%; min-height: 150px; max-height: 150px; position: relative; z-index: 4; }
+    > div { min-width: 120px; min-height: 120px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
+        > div { min-width: 100px; min-height: 100px; border: 3px solid var(--k1); border-top: 3px solid transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
+        img { width: 80px; border-radius: 99px; position: absolute; }}}
+.spinner { top: 0; left: 0; width: 100vw; height: 100vh; /* height: var(--app-height); */ position: fixed; display: flex; align-items: center; justify-content: center; z-index: 9; background-color: rgba(255,255,255,0.75); backdrop-filter: blur(4px);
+    > div { min-width: 80px; min-height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); 
+        > div { min-width: 40px; min-height: 40px; border: 3px solid var(--k1); border-top: 3px solid transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }}}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@-webkit-keyframes spin { 0% { -webkit-transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); } }
+.popBody div.icon, .result div.icon { width: 100%; margin: -60px 0 5px; display: flex; justify-content: center;
+    > i, > svg { border-radius: 999px; background-color: white; box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2);}
+    > div { width: 80px; height: 80px; padding: 20px; border-radius: 999px; display: flex; align-items: center; justify-content: center; background-color: white; box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2);
+        &.orange { border: 7.5px solid var(--cOrange); }
+        &.blue { border: 7.5px solid var(--cBlue); }}
+    > img { height: 80px; box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2); }
+    .fa-circle-check { border-radius: 99px; background-color: white; color: var(--cGreen); }
+    .fa-circle-xmark { border-radius: 99px; background-color: white; color: var(--cRed); }
+    .fa-hourglass-half, .fa-exclamation { color: var(--cOrange); }}
+button { width: 100%; height: 40px; border-radius: 99px; display: flex; align-items: center; justify-content: center; gap: 5px; background-color: var(--k1);
+    span { color: white !important; }}
+.switch { position: relative; display: inline-block; min-width: 40px; max-width: 40px; height: 24px; margin: 5px;
+    input { opacity: 0; width: 0; height: 0;
+        &:checked + .slider { background-color: var(--k1); }
+        &:focus + .slider { box-shadow: 0 0 1px var(--k1); }
+        &:checked + .slider:before { -webkit-transform: translateX(16px); -ms-transform: translateX(16px); transform: translateX(16px); }}
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; border-radius: 34px; background-color: var(--cG4); -webkit-transition: .4s; transition: .4s;
+        &:before { position: absolute; content: ""; height: 20px; width: 20px; left: 2px; bottom: 2px; border-radius: 50%; background-color: white; -webkit-transition: .4s; transition: .4s; }}}
+div.pages { width: 100%; height: 30px; display: flex; align-items: flex-start; border-bottom: 1px solid var(--cG5);
+    a.page { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center;
+        &.active { color: var(--k1); border-bottom: 2px solid var(--k1);
+            span { color: var(--k1); }}
+        span { color: var(--cG4); }}}
+.check { width: fit-content; min-height: 20px; padding: 5px 0 5px 20px; border-radius: 10px; position: relative; display: flex; align-items: center; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; font-size: 12px;
+    // &:hover { background: var(--cBg); } 
+    &:hover input ~ .checkmark { border: 2px solid var(--cG5); background-color: var(--cG5); }
+    span:last-child { margin-left: 2px; }
+    input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; /* Hide the browser's default radio button */
+        &:checked ~ .checkmark { background-color: var(--k1); border: 2px solid var(--k1); } /* When the radio button is checked, add a blue background */
+        &:checked ~ .checkmark:after { display: block; } /* Show the indicator (dot/circle) when checked */}
+    .checkmark.checkbox { position: absolute; top: auto; bottom: auto; left: 0; height: 16px; width: 16px; border-radius: 2px; background-color: var(--cG5);
+        &:after { content: ""; position: absolute; display: none; } /* Create the checkmark/indicator (hidden when not checked) */
+        &:after { left: 3px; top: -1px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } /* Style the checkmark/indicator */}}
+div.filter { width: 100%; height: 20px; margin-top: -10px; display: flex; align-items: center;
+    > * { width: 100%; height: 20px; padding: 0 10px; gap: 5px; display: flex; align-items: center; }
+    > *:not(:first-child) { border-left: 1px solid var(--cG5); }
+    span, input { font-size: var(--fS); white-space: nowrap; }
+    i, svg { color: var(--k1); }
+    a.dropdown { justify-content: space-between; }
+    div.search { justify-content: center;
+        input { width: 100%;
+            &::placeholder { color: var(--cG4); }}}}
+a.dateRange { width: 100%; height: 40px; padding: 0 15px; border: 1px solid var(--cG5); border-radius: 10px; display: flex; align-items: center; justify-content: space-between;
+    span { color: var(--cG3); }
+    i, svg { color: var(--k1); }}
+.iframe { width: 100%; height: 100%; top: 0; left: 0; position: absolute; z-index: 99; }
+.pop { width: 100%; height: 100%; padding: 10px; position: fixed; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.5); display: none; align-items: flex-end; justify-content: center; z-index: 8;
+    &.bg { background-color: black; }
+    .popBody { width: 100%; max-width: 430px; max-height: 100%; padding: 20px; border-radius: 20px; position: relative; display: flex; flex-direction: column; gap: 20px; background-color: white; overflow-y: auto; animation-name: popup; animation-duration: 0.5s; animation-iteration-count: 1;
+        a.close { width: 30px; height: 30px; min-height: 30px; margin: -20px 0 -30px auto; border-radius: 99px; top: 0; position: sticky; display: flex; align-items: center; justify-content: center; color: var(--cG4); background-color: rgba(255, 255, 255, 0.75); }}}
+@keyframes popup { 0% { margin-bottom: -100vh; } 100% { margin-bottom: 0; }}
+@keyframes popdown { 0% { margin-bottom: 0; } 100% { margin-bottom: -100vh; }}
+
+/* Common */
+.payment, .result, .price, .login, .coin, .tickets, .ticket, .news, .new, .profile, .profileEdit, .carrier, .policy {
+    section.head { width: 100%; max-width: 430px; height: 70px; padding: 20px 20px 30px; left: 50%; transform: translate(-50%, 0); position: fixed; display: flex; align-items: center; justify-content: center; gap: 5px; z-index: 5;
+        .bg { width: 1000px; height: 1000px; border-radius: 999px; position: absolute; bottom: -15px; background: var(--k2); pointer-events: none; z-index: -1; }
+        .left, .right { width: 100%; display: flex; align-items: center; }
+        .right { justify-content: right; }}}
+a.coupon { height: 140px; padding: 0 30px; border-radius: 20px; position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--cBg); overflow: hidden; z-index: 3;
+    &.gift .title { font-size: var(--fL); color: var(--cG1); }
+    &.stamp { height: 180px;
+        div.count { margin-bottom: 5px; gap: 10px; display: flex; align-items: center;
+            img { width: 40px; height: 40px; border-radius: 10px; }
+            div.bar { width: 100%; border-radius: 99px; background-color: var(--cG5); overflow: hidden;
+                div { width: 50%; height: 8px; border-radius: 99px; background-color: var(--k1); }}
+            span { font-weight: bold; color: var(--k1); white-space: nowrap; }}}
+    div.dot { width: 40px; height: 40px; border-radius: 99px; z-index: 2; position: absolute; background-color: white;
+        &.left { left: -20px; }
+        &.right { right: -20px; }}
+    div.label { width: 150px; height: 24px; z-index: 1; transform: rotate(30deg); position: absolute; top: 5px; right: -45px; display: flex; align-items: center; justify-content: center; background-color: var(--cG4);
+        span { font-size: var(--fS); color: white; }}
+    div.content { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 2px;
+        div.sticker { display: flex; gap: 5px; align-items: center;
+            img { height: 40px; aspect-ratio: 1/1; border-radius: 5px; }
+            span { font-weight: bold; color: var(--k1); }}}
+    > img { width: 100px; height: 100px; border-radius: 10px; }
+    span {
+        &.title { font-size: var(--fL); color: var(--k1); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+        &.name { font-size: var(--fS); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+        &.info { max-height: 57px; font-size: var(--fS); color: var(--cG3); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: unset !important;
+            * { font-size: var(--fS); color: var(--cG3); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: unset !important; }}
+        &.date { font-size: var(--fS); }
+        &.point { font-size: var(--fL); font-weight: bold; color: var(--k1); }
+        &.none { font-size: var(--fM); color: var(--k1); text-align: center; }}}
+section.pop.notice { align-items: center;
+    .popBody { display: flex; flex-direction: column; align-items: center; overflow-y: visible;
+        span { text-align: center;
+            &.title { font-size: var(--fL); }
+            &:not(.title) { color: var(--cG3); }}
+        ol { padding-left: 20px; }
+        div.icon { display: flex; justify-content: center; margin-top: -60px; }
+        > div.buttons { width: 100%; display: flex; gap: 10px;
+            button { background-color: var(--cBg);
+                &:last-child { background-color: var(--k1);
+                    span { color: white !important; }}
+                span { color: var(--cG2) !important; }}}
+        > div:not(.buttons) { display: flex; flex-direction: column; align-items: center; }}}
+section.pop.banner { padding: 20px; align-items: flex-start; background-color: transparent; pointer-events: none;
+    .popBody { padding: 10px 15px; border: 2px solid var(--k1); gap: 5px; background-color: rgba(255, 255, 255, 0.95); animation-name: bannerDown; box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2); pointer-events: initial;
+        span.title { font-size: var(--fL); color: var(--k1); }
+        span.time { color: var(--cG3); }}}
+@keyframes bannerDown { 0% { margin-top: -100vh; } 100% { margin-top: 0; }}
+@keyframes bannerUp { 0% { margin-top: 0; } 100% { margin-top: -100vh; }}
+section.pop.notification .popBody { 
+    span.title { font-size: var(--fL); font-weight: bold; }
+    a.read { display: flex; justify-content: center;
+        span { color: var(--k1); }}
+    a.item { display: flex; align-items: center; gap: 10px;
+        &:not(:last-child) { padding-bottom: 20px; border-bottom: 1px solid var(--cG5); }
+        div.dot { min-width: 8px; min-height: 8px; border-radius: 99px;
+            &.active { background-color: var(--cRed); }}
+        div.left { display: flex; flex-direction: column;
+            span { font-size: var(--fL);
+                &:not(:first-child) { font-size: var(--fM); }
+                &:not(:first-child):not(:nth-child(2)) { color: var(--cG3); }}}
+        div.right { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end;
+            > div { display: flex; align-items: center; gap: 5px;
+                span { font-size: var(--fL); font-weight: bold; }
+                img { width: 24px; }}
+            > span { font-size: var(--fS); color: var(--cG3); }}}}
+section.pop.dateRange {
+    span.title { font-size: var(--fL); } 
+    div.tabs { width: 100%; display: flex; align-items: center; 
+        a { width: 100%; height: 40px; border-radius: 99px; display: flex; align-items: center; justify-content: center;
+            &.active { background: var(--k2);
+                span { color: var(--k1); }}}}
+    div.dateRange { width: 100%; height: 30px; padding: 0 20px; border-bottom: 1px solid var(--cG5); position: relative; display: flex; align-items: center; justify-content: space-around;
+        input { text-align: center; }}
+    div.buttons { width: 100%; display: flex; gap: 10px;
+        button:first-child { background-color: var(--cBg);
+            span { color: var(--cG2) !important; }}}}
+section.barcode { align-items: center;
+    &.v2 .popBody { border-radius: 40px 40px 20px 20px; gap: 30px; }
+    .popBody {
+        div.header { height: 60px; min-height: 60px; padding-right: 20px; border-radius: 99px; gap: 15px; display: flex; align-items: center; background: var(--k2);
+            > div:not(.content) { height: 60px;
+                img { height: 90px; aspect-ratio: 1/1; margin: -5px; border: 5px solid white; border-radius: 30px; }}
+            div.content { width: 100%; margin-left: 20px; display: flex; flex-direction: column; }
+            span { width: 100%;
+                &.title { font-size: var(--fXL); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+                &.remark { width: fit-content; font-size: var(--fS); text-align: start !important; color: var(--cG3) !important; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+                &:not(.title) { text-align: end; color: var(--k1); }}
+            a { text-decoration: underline !important; white-space: nowrap; color: var(--k1); }}
+        div.code { width: 100%; height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+            div { display: flex; align-items: center; gap: 5px;
+                img { height: 40px; aspect-ratio: 1/1; border-radius: 99px; }
+                span { font-size: var(--fXL); }}
+            div.barcode, img.barcode { width: 100%; justify-content: center;  }
+            div.qrcode, img.qrcode { height: 200px; justify-content: center; }}
+        div.action { min-height: 25px; display: flex; align-items: center; justify-content: space-between;
+            div.left { display: flex; align-items: center; gap: 15px;
+                a {
+                    &.active { i, svg { color: var(--k1); }}
+                    &:last-child { padding-left: 15px; border-left: 1px solid var(--cG5); }
+                    i, svg { color: var(--cG4); }}}
+            div.right { display: flex; align-items: center; gap: 10px;
+                span { font-size: var(--fS); color: var(--cG3); }
+                i, svg { color: var(--k1); }}}}}
+section.pop.category {
+    .popBody { gap: 10px;
+        @supports (-webkit-touch-callout: none) and (not (translate: none)) { > *:not(:last-child) { margin-bottom: 10px; }}}
+    span {
+        &.title { margin: 10px 0 5px; font-size: var(--fL); font-weight: bold; color: var(--k1); }
+        &.active { color: var(--k1); }}
+    a:not(.close):not(:last-child) { padding-bottom: 10px; border-bottom: 1px solid var(--cG5); }}
+section.pop.invite .popBody { background: var(--k2);
+    > a.close { display: none; }
+    > div:not(.action) {
+        span:not(.title) { color: var(--k1); }
+        div.icon div.border { border: 7.5px solid var(--k1);
+            i, svg { color: var(--k1); }}}
+    div.action { width: 100%; display: flex; flex-direction: column; gap: 10px;
+        button { padding: 0 15px; display: flex; align-items: center; gap: 5px; background-color: white;
+            span { width: 100%; color: var(--cG1) !important; text-align: start; white-space: nowrap;
+                &.note { width: fit-content; font-size: var(--fS); color: var(--cG3) !important; }}
+            i, svg { color: var(--k1);
+            &.fa-line { outline: 6px solid white; outline-offset: -4px; border-radius: 99px; background-color: #06C755; color: white;
+                &::before { border-radius: 99px; background-color: #06C755; }}}}}}
+section.pop.gift .popBody {
+    > img { width: 100%; border-radius: 15px; }
+    > div { gap: 5px; display: flex; flex-direction: column;
+        span { color: var(--cG3);
+            &.title { font-size: var(--fXL); color: var(--cG1); }}
+        div.sticker { gap: 5px; display: flex; align-items: center;
+            img { height: 50px; aspect-ratio: 1/1; border-radius: 10px; }
+            span { font-size: var(--fXL); font-weight: bold; color: var(--k1); }}}
+    button { min-height: 40px;
+        &.disabled span { color: white !important; }}}
+section.pop.intro { width: 100%; height: 100%; padding: 0; align-items: center;
+    .popBody { width: 100%; height: 100%; padding: 0; border-radius: 0; position: relative; gap: 10px; align-items: center; justify-content: space-around; overflow: hidden;
+        img { width: 100%; height: 100%; }
+        div.next { width: 90%; bottom: 25px; position: absolute; display: flex; align-items: center; justify-content: space-between; color: var(--k1);
+            div.dots { display: flex; align-items: center; gap: 5px;
+                div { min-width: 6px; min-height: 6px; border-radius: 99px; background-color: var(--cG5);
+                    &.active { background-color: var(--k1); }}}
+            a { width: 30px; height: 30px; border-radius: 99px; display: flex; align-items: center; justify-content: center;}}
+        button { width: 150px; bottom: 80px; position: absolute; z-index: 100;
+            span { font-size: var(--fL); }}}}
+section.pop.visit { height: 100%; padding: 50px 25px; align-items: center;
+    .popBody { height: 100%; gap: 10px; align-items: center; justify-content: space-between; overflow: hidden;
+        img { max-width: 100%; max-height: 90%; aspect-ratio: 9/16; border-radius: 10px; }
+        div.next { width: 100%; display: flex; align-items: center; justify-content: space-between; color: var(--k1);
+            div.dots { display: flex; align-items: center; gap: 5px;
+                div { min-width: 6px; min-height: 6px; border-radius: 99px; background-color: var(--cG5);
+                    &.active { background-color: var(--k1); }}}
+            a { width: 100%; display: flex;
+                &.right { justify-content: flex-end; }}}
+        div.buttons { width: 100%; display: flex; align-items: center; gap: 10px;
+            button { width: 100%; background-color: var(--cBg);
+                &:last-child { background-color: var(--k1);
+                    span { color: white !important; }}
+                span { color: var(--cG2) !important; }}}}}
+
+section.pop.points { padding: 0;
+    .popBody { padding-bottom: 0; margin-bottom: -20px; border-radius: 20px 20px 0 0; animation-name: popupDiscount; }
+    span.title { font-size: var(--fL); font-weight: bold; }
+    div.loading {
+        div { min-width: 65px; min-height: 65px;
+            div { border: 3px solid var(--q1); border-top: 3px solid transparent; }}
+        img { width: 50px; filter: grayscale(100%); }}
+    div.points--none { min-height: 150px; gap: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        img { height: 50px; filter: grayscale(100%); }
+        span { font-size: var(--fL); color: var(--cG4); }}
+    div.point__card { height: 90px; min-height: 90px; margin-bottom: -40px; scroll-margin: 100px; border-radius: 20px 20px 0 0; z-index: 5; /* animation-name: newCard; */ animation-delay: 0.5s; animation-duration: 0.5s; animation-iteration-count: 1; overflow-y: hidden; box-shadow: 0px -5px 10px rgba(51, 51, 51, 0.2);
+        &:last-child { margin-bottom: 0; }
+        &:nth-child(3n) > div { background-color: var(--q3); }
+        &:nth-child(3n+1) > div { background-color: var(--q2); }
+        > div { height: 100%; padding: 10px 15px 40px; border-radius: 20px 20px 0 0; gap: 15px; display: flex; flex-direction: column; align-items: center; background-color: var(--q1);
+            * { color: white; }
+            .card__top { width: 100%; min-height: 50px; gap: 5px; display: flex; align-items: center;
+                img { min-width: 34px; }
+                .card__count { font-size: var(--fXL); }
+                .card__info { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; }
+                .card__detail { margin-bottom: -3px; font-size: var(--fS); color: rgba(white, 0.75); }
+                .card__name { font-size: var(--fL); }}
+            .card__input { position: relative; display: flex; align-items: center;
+                img { height: 18px; left: 5px; position: absolute; }
+                input { width: 160px; padding: 0 5px 0 30px; border-bottom: 1px solid rgba(white, 0.6); border-radius: 0; font-size: var(--fL); text-align: right;
+                    &::placeholder { color: rgba(white, 0.4); }}} 
+            .card__action { width: 100%; min-height: 40px; border-radius: 15px; gap: 2.5px; display: flex; align-items: center; justify-content: center; background-color: rgba(white, 0.25); }
+            hr { width: 100%; border: 1px dashed rgba(white, 0.5); }
+            .card__rate { gap: 2px; display: flex; align-items: center; opacity: 0.6;
+                img { height: 18px; }
+                span { font-size: var(--fL); }}
+            .card__description { width: 100%; height: 100%; opacity: 0.6; overflow-y: scroll; }}}}
+section.pop.coupons { padding: 0;
+    .popBody { padding-bottom: 0; margin-bottom: -20px; border-radius: 20px 20px 0 0; animation-name: popupDiscount; }
+    span.title { font-size: var(--fL); font-weight: bold; }
+    div.loading {
+        div { min-width: 70px; min-height: 70px;
+            div { border: 3px solid var(--q1); border-top: 3px solid transparent; }}
+        img { width: 50px; border-radius: 0; filter: grayscale(100%); }}
+    div.coupons--none { min-height: 150px; gap: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        img { height: 50px; filter: grayscale(100%); }
+        span { font-size: var(--fL); color: var(--cG4); }}
+    div.coupon__card { height: 90px; min-height: 90px; margin-bottom: -40px; scroll-margin: 100px; border-radius: 20px 20px 0 0; z-index: 5; /* animation-name: newCard; */ animation-delay: 0.5s; animation-duration: 0.5s; animation-iteration-count: 1; overflow-y: hidden; box-shadow: 0px -5px 10px rgba(51, 51, 51, 0.2);
+        &:last-child { margin-bottom: 0; }
+        &:nth-child(3n) > div { background-color: var(--q3); }
+        &:nth-child(3n+1) > div { background-color: var(--q2); }
+        > div { height: 100%; padding: 15px 15px 40px; border-radius: 20px 20px 0 0; gap: 15px; display: flex; flex-direction: column; align-items: center; background-color: var(--q1);
+            * { color: white; }
+            .card__top { width: 100%; min-height: 90px; gap: 5px; display: flex; align-items: flex-start;
+                .card__info { margin-right: auto; display: flex; flex-direction: column; }
+                .card__detail { font-size: var(--fS); color: rgba(white, 0.75); }
+                .card__name { font-size: var(--fL); }
+                img { width: 90px; height: 90px; border-radius: 15px; filter: drop-shadow(0px 5px 10px rgba(55, 84, 170, 0.2)); }}
+            .card__action { width: 100%; min-height: 40px; border-radius: 15px; gap: 2.5px; display: flex; align-items: center; justify-content: center; background-color: rgba(white, 0.25); }
+            hr { width: 100%; border: 1px dashed rgba(white, 0.5); }
+            .card__description { width: 100%; height: 100%; opacity: 0.6; overflow-y: auto; }}}}
+@keyframes popupDiscount { 0% { margin-bottom: -100vh; } 100% { margin-bottom: -20px; }}
+@keyframes newCard { 0% { height: 90px; min-height: 90px; } 50% { height: 120px; min-height: 120px; } 100% { height: 90px; min-height: 90px; }}
+@keyframes openCard { 0% { height: 90px; min-height: 90px; } 100% { height: 400px; min-height: 400px; }}
+@keyframes closeCard { 0% { height: 400px; min-height: 400px; } 100% { height: 90px; min-height: 90px; }}
+
+// 票券列表
+.tickets { min-width: 100vw; min-height: 100vh; overflow: auto; background-color: white;
+    section.head {
+        .left a { min-width: 30px; min-height: 30px; border-radius: 99px; display: flex; align-items: center; justify-content: center; color: var(--k1); }
+        > span { white-space: nowrap; font-size: var(--fL); }
+        .right a { color: var(--k1); }}
+    section.main { width: 100%; max-width: 430px; padding: 100px 20px 100px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;
+        @supports (-webkit-touch-callout: none) and (not (translate: none)) { > *:not(:last-child) { margin-bottom: 20px; }}
+        div.none { margin: 100px 0; gap: 10px; display: flex; flex-direction: column; align-items: center;
+            span { text-align: center; font-size: var(--fL); color: var(--cG3); }}
+        button.action { width: fit-content; padding: 0 15px; position: fixed; left: 50%; bottom: 30px; transform: translate(-50%, 0); color: white; box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2); z-index: 2; white-space: nowrap;
+            @supports (-webkit-touch-callout: none) and (not (translate: none)) { width: auto !important; }}}}
+
+// 票券
+.ticket { min-width: 100vw; min-height: 100vh; background: var(--k2);
+    section.head { height: 60px; padding: 20px; background: var(--k2);
+        .left a { min-width: 30px; min-height: 30px; border-radius: 99px; display: flex; align-items: center; justify-content: center; color: var(--k1); }
+        > span { font-size: var(--fL); white-space: nowrap; }}
+    section.foot { width: 100%; max-width: 430px; padding: 20px 20px 30px; border-radius: 20px 20px 0 0; left: 50%; transform: translate(-50%, 0); bottom: 0; position: fixed; display: flex; gap: 10px; z-index: 5; background: var(--k2);
+        @supports (-webkit-touch-callout: none) and (not (translate: none)) { > *:not(:last-child) { margin-right: 10px; }}
+        button {
+            &.secondary { background-color: white;
+                span { color: var(--k1) !important; }}
+            span { font-size: var(--fL); }}}
+    section.main { width: 100%; max-width: 430px; padding: 60px 20px 90px; margin: 0 auto;
+        div.coupon { width: 100%; min-height: 450px; padding: 20px 30px; border-radius: 20px; position: relative; display: flex; flex-direction: column; gap: 20px; background-color: white; overflow: hidden;
+            @supports (-webkit-touch-callout: none) and (not (translate: none)) { > *:not(:last-child) { margin-bottom: 20px; }}
+            > img { width: 100%; border-radius: 15px;
+                @supports (-webkit-touch-callout: none) and (not (translate: none)) { width: 50%; margin: 0 auto; }}
+            > div { display: flex; flex-direction: column; gap: 5px;
+                @supports (-webkit-touch-callout: none) and (not (translate: none)) { > *:not(:last-child) { margin-bottom: 5px; }}
+                a { text-decoration: underline !important; }
+                span {
+                    &.title { font-size: var(--fXL); color: var(--k1); }
+                    &.subtitle { font-weight: bold; }
+                    &.content { color: var(--cG3); }}
+                &.dot { width: 40px; height: 40px; border-radius: 99px; z-index: 2; top: 350px; position: absolute; background: var(--k2);
+                    &.left { left: -20px; }
+                    &.right { right: -20px; }}
+                &.label { width: 200px; height: 34px; z-index: 1; transform: rotate(30deg); position: absolute; top: 10px; right: -60px; display: flex; align-items: center; justify-content: center; background-color: var(--cG4);
+                    span { font-size: var(--fL); color: white; }}
+                &.sticker { width: 100%; display: flex; flex-direction: row; flex-wrap: wrap;
+                    img { width: calc(20% - 4px); aspect-ratio: 1/1; border-radius: 10px;
+                        &:not(.checked) { filter: grayscale(100%); opacity: 0.5; }}}}
+            a.coupon { padding: 0 25px; background-color: var(--cBg);
+                div.dot { width: 30px; height: 30px; background-color: white;
+                    &.left { left: -15px; }
+                    &.right { right: -15px; }}}
+            hr { border: 1px dashed var(--cG5); }}}
+    section.pop.notice { span:not(.title) { color: var(--cRed); }}}

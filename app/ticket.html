@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TTPush</title>
+        <link rel="icon" type="image/png" href="img/logo.png"/>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="DotDot">
+        <meta name="description" content="DotDot">
+        <meta name="author" content="DotDot">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- Screen Ratio -->
+        <meta name="format-detection" content="telephone=no"> <!-- Phone no. detection -->
+        <!-- CSS -->
+        <link rel="stylesheet" href="./index.css">
+        <!-- Awesome Icon -->
+        <link href="./fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    </head>
+    <body class="ticket">
+        <!-- Header -->
+        <section class="head">
+            <div class="left">
+                <a href="javascript:history.back()">
+                    <i class="fas fa-chevron-left fa-lg"></i>
+                </a>
+            </div>
+            <span>優惠券</span>
+            <div class="right"></div>
+        </section>
+        <!-- Footer -->
+        <section class="foot">
+            <button class="secondary" onclick="window.location.href='tickets.html'">
+                <span>返回列表</span>
+            </button>
+            <button onclick="popConfirm();">
+                <span>現場兌換</span>
+            </button>
+        </section>
+        <section class="main">
+            <!-- 優惠券/集章 -->
+            <div class="coupon">
+                <div class="dot left"></div>
+                <div class="dot right"></div>
+                <div class="label">
+                    <span>已兌換</span>
+                </div>
+                <img src="./img/food.png"> <!-- 優惠券限定 -->
+                <div>
+                    <span class="title">滿$100折$10</span>
+                    <span>米哥烘焙坊</span>
+                    <span class="content">即日期至十二月底，凡來店消費每筆滿台幣一百元，即可折抵台幣十元，數量有限，詳情請參考店內公告。</span>
+                    <span>2021/10/01 - 2022/01/22</span>
+                </div>
+                <hr>
+                <div>
+                    <span class="subtitle">優惠說明</span>
+                    <span class="content">即日期至十二月底，凡來店消費每筆滿台幣一百元，即可折抵台幣十元，數量有限，詳情請參考店內公告。</span>
+                </div>
+            </div>
+        </section>
+        <!-- 確認popup -->
+        <section id="popConfirm" class="pop notice" onclick="popClose(this)">
+            <div class="popBody">
+                <div>
+                    <div class="icon">
+                        <i class="fa-regular fa-circle-xmark fa-5x"></i>
+                        <div class="orange"><i class="fas fa-exclamation fa-2x"></i></div>
+                    </div>
+                    <span class="title">確定使用滿$100折$10？</span>
+                    <span>使用後將無法取消，請確認已出示給現場人員</span>
+                </div>
+                <div class="buttons">
+                    <button onclick="popClose(this)">
+                        <span>取消</span>
+                    </button>
+                    <button onclick="popBarcode()">
+                        <span>確定兌換</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- 優惠券條碼popup -->
+        <section id="popBarcode" class="pop barcode v2" onclick="popClose(this)">
+            <div class="popBody">
+                <!-- <a class="close" onclick="popClose(this)"><i class="fa-solid fa-xmark fa-lg"></i></a> -->
+                <div class="header">
+                    <div><img src="./img/food.png"></div>
+                    <span class="title">滿$100折$10</span>
+                </div>
+                <div class="code">
+                    <!-- ********** QRcode / Barcode+代碼 二擇一 ********** -->
+                    <!-- <img class="qrcode" src="./img/qrcode.png"> -->
+                    <img class="barcode" src="./img/barcode.png">
+                    <span>/ASDFGHJ</span>
+                </div>
+                <div class="action">
+                    <div class="left">
+                        <a class="active">
+                            <i class="fas fa-barcode fa-lg"></i>
+                        </a>
+                        <a>
+                            <i class="fas fa-qrcode fa-lg"></i>
+                        </a>
+                    </div>
+                    <div class="right">
+                        <span>04:54 更新</span>
+                        <a><i class="fas fa-sync fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Script -->
+        <script src="./ticket.js"></script>
+    </body>
+</html>
