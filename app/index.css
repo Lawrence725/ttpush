@@ -1813,6 +1813,7 @@ section.pop.coupons div.coupon__card > div .card__description {
   box-shadow: 0px 5px 10px rgba(55, 84, 170, 0.2);
   z-index: 2;
   white-space: nowrap;
+  z-index: 4;
 }
 @supports (-webkit-touch-callout: none) and (not (translate: none)) {
   .tickets section.main button.action {
