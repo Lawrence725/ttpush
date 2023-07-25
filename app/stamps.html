@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="TTPush">
+        <meta name="description" content="TTPush">
+        <meta name="author" content="TTPush">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <title>TTPush</title>
+        <link rel="icon" type="image/png" href="img/logo.png"/>
+        <!-- CSS -->
+        <link rel="stylesheet" href="ty.css">
+        <link rel="stylesheet" href="unique.css">
+        <!-- Awesome Icon -->
+        <link href="fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    </head>
+    <body class="marginX">
+        <div class="body fixed mobile"> <!-- class: fixed, mobile -->
+            <!-- Loading Spinner -->
+            <!-- <div class="spinner"><div><div></div></div></div> -->
+            <!-- Header -->
+            <section class="header stamps">
+                <a class="icon iconButton third" href="service.html">
+                    <i class="fas fa-chevron-left fa-lg"></i>
+                </a>
+                <span class="fL">我的集章</span>
+                <div class="icon iconButton"></div>
+            </section>
+            <!-- Main -->
+            <section class="main stamps">
+                <!-- Filter -->
+                <div class="filter flexH width">
+                    <div class="flexH width middle">
+                        <div class="dropdown rounded">
+                            <select name="type" class="fM rounded">
+                                <option value="店家距離">店家距離</option>
+                                <option value="優惠有效時間">優惠有效時間</option>
+                                <option value="票卷加入時間">票卷加入時間</option>
+                            </select>
+                            <div class="arrow third"><i class="fas fa-caret-down fa-xs"></i></div>
+                        </div>
+                    </div>
+                    <div class="lineV"></div>
+                    <div class="flexH width middle">
+                        <div class="dropdown rounded">
+                            <select name="type" class="fM rounded">
+                                <option value="可使用">可使用</option>
+                                <option value="已使用">已使用</option>
+                                <option value="已過期">已過期</option>
+                            </select>
+                            <div class="arrow third"><i class="fas fa-caret-down fa-xs"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- List -->
+                <div class="list flexV width">
+                    <!-- 搜尋 -->
+                    <div class="input rounded">
+                        <input type="text" class="fM" placeholder="搜尋" value="">
+                        <a class="icon iconButton"><i class="fas fa-search fa-lg"></i></a>
+                    </div>
+                    <!-- 集章列表 -->
+                    <a class="stampsItem flexV around" href="stamp.html">
+                        <span class="fL third single">集章標題</span>
+                        <div class="topLeft">
+                            <div class="textBg flexV center"> <!-- class: active 切換開關 -->
+                                <span class="fM white">已完成</span> <!-- 已完成/已過期 -->
+                            </div>
+                        </div>
+                        <div class="topRight">
+                            <div class="textBg flexV center active"> <!-- class: active 切換開關 -->
+                                <span class="fM primary">最新</span>
+                            </div>
+                        </div>
+                        <span class="fM single">特店名稱</span>
+                        <span class="fS gray">集章 2021/10/01 - 2022/01/22</span>
+                        <span class="fS gray">兌換 2021/10/01 - 2022/02/22</span>
+                        <div class="flexH width">
+                            <img src="img/stamp.png">
+                            <div class="bar flexH width rounded">
+                                <div></div>
+                            </div>
+                            <span class="fM bold primary">8/20</span>
+                        </div>
+                    </a>
+                    <a class="stampsItem flexV around" href="stamp.html">
+                        <span class="fL third single">集章標題</span>
+                        <div class="topLeft">
+                            <div class="textBg flexV center active"> <!-- class: active 切換開關 -->
+                                <span class="fM white">已完成</span> <!-- 已完成/已過期 -->
+                            </div>
+                        </div>
+                        <div class="topRight">
+                            <div class="textBg flexV center"> <!-- class: active 切換開關 -->
+                                <span class="fM primary">最新</span>
+                            </div>
+                        </div>
+                        <span class="fM single">特店名稱</span>
+                        <span class="fS gray">集章 2021/10/01 - 2022/01/22</span>
+                        <span class="fS gray">兌換 2021/10/01 - 2022/02/22</span>
+                        <div class="flexH width">
+                            <img src="img/stamp.png">
+                            <div class="bar flexH width rounded">
+                                <div></div>
+                            </div>
+                            <span class="fM bold primary">8/20</span>
+                        </div>
+                    </a>
+                    <div class="none">
+                        <i class="fas fa-stamp fa-2x"></i>
+                        <span>目前尚無集章卡</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

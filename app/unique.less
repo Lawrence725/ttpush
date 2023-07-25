@@ -1,0 +1,114 @@
+// Screen Size
+@sD:    (min-width: 1024px);                                                                                // Desktop
+@sT:    (max-width: 1023px) and (min-width: 768px);                                                         // Tablet
+@sM:    (max-width: 767px);                                                                                 // Mobile
+@sMs:   (max-width: 374px);                                                                                 // Mobile (Small)
+@sLand: (max-height: 767px) and (min-width: 568px) and (max-width: 1080px) and (orientation: landscape);    // Mobile (Landscape)
+
+.body {
+    .header .fa-chevron-left, .header .fa-xmark, .header .fa-times { color: var(--c1) !important; font-size: 1.5em; line-height: 0.04167em; vertical-align: -0.125em; }
+    .header.v2 { background: url(../img/bg.png); background-size: cover; background-position: center top; box-shadow: 0px 10px 20px rgba(239, 96, 121, 0.1);
+        i, svg, span { color: white !important; }}
+    .main.v2 { background: url(../img/bg.png); background-size: cover; background-position: center top; }
+    .footer { width: 100%; padding: 0 !important;
+        a.visit { width: 100%; height: 70px; gap: 10px; display: flex; align-items: center; justify-content: center; background-color: var(--c1); box-sizing: border-box;
+            span { font-size: var(--fL); color: var(--c2);
+                span { font-size: var(--fXL); font-weight: bold; color: white; }}
+            i, svg { color: white; }}}
+    .function.v2 span, .functions.v2 span { color: white; }
+    section.popDropdown { backdrop-filter: unset; align-items: flex-end;
+        .popBody { width: 100%; margin: 10px; animation-name: popup; animation-duration: 0.5s; animation-iteration-count: 1; }
+        .popMain { padding: 0 !important; margin: 0 !important;
+            a { width: 100%; padding: 10px 5px; display: flex; align-items: center; box-sizing: border-box;
+                &:not(:last-child) { border-bottom: 1px solid var(--cG5); }
+                &.active { span { color: var(--c1) }}}}}
+    @keyframes popup { 0% { margin-bottom: -100vh; } 100% { margin-bottom: 10px; }}
+    @keyframes popdown { 0% { margin-bottom: 10px; } 100% { margin-bottom: -100vh; }}
+    .listEmpty { min-height: calc(100vh - 150px);
+        .icon { margin-bottom: 50px; }}
+    .landscape { border-radius: 0; display: none; position: absolute; background: linear-gradient(135deg, rgba(239, 96, 121, 0.5) 0%, #EF6079 100%), #FFFFFF; z-index: 9;
+        @media @sLand { display: flex; }
+        .icon { margin: 0 20px 0 0; }}
+    .stampsItem { width: calc(100% - 10px); max-width: 500px; aspect-ratio: 335/150; box-sizing: border-box; padding: 0 30px; margin: 10px 0; position: relative; background-image: url(./img/bg-stamp.svg); background-size: contain; background-repeat: no-repeat;
+        > *:first-child { margin-top: 10px; }
+        > *:last-child { margin-bottom: 10px; }
+        .topLeft { width: 100px; height: 60px; top: 0; left: 0; position: absolute; overflow: hidden;
+            .textBg { width: 150px; top: 10px; left: -40px; position: absolute; display: none; background-color: var(--cG4); transform: rotate(-30deg);
+                &.active { display: flex; }}}
+        .topRight { width: 100px; height: 60px; top: 0; right: 0; position: absolute; overflow: hidden;
+            .textBg { width: 150px; top: 10px; right: -40px; position: absolute; display: none; background-color: var(--c2); transform: rotate(30deg);
+                &.active { display: flex; }}}
+        img { width: 40px; aspect-ratio: 1/1; border-radius: 4px; }
+        .bar { height: 10px; margin: 0 10px; background-color: var(--cG5);
+            div { width: 60%; height: 100%; border-radius: 99px; background-color: var(--c1); }}}
+
+    .stamps {
+        &.main { padding: 60px 10px 70px !important;
+            .filter {
+                .lineV { height: 20px; background-color: var(--c2); }
+                .dropdown { width: fit-content;
+                    select { width: fit-content; padding: 0 30px 0 10px; background-color: transparent; }}}
+            .list { align-items: center; overflow-y: auto;
+                div.none { margin: 100px 0; display: flex; flex-direction: column; align-items: center;
+                    i, svg { margin-bottom: 10px; color: var(--cG1); }
+                    span { font-size: var(--fL); }}}}}
+    .stamp {
+        &.main { /* height: 100vh; height: var(--app-height); */ margin: 60px 15px 70px; padding: 10px 20px !important; border-radius: 20px; position: relative; background-color: white;
+            @media @sD, @sT { width: 748px !important; margin: 60px auto 70px; }
+            .topLeft { width: 150px; height: 100px; top: 0; left: 0; position: absolute; overflow: hidden;
+                .textBg { width: 200px; padding: 2.5px 0; top: 10px; left: -60px; position: absolute; display: none; background-color: var(--cG4); transform: rotate(-30deg);
+                    &.active { display: flex; }}}
+            .topRight { width: 150px; height: 100px; top: 0; right: 0; position: absolute; overflow: hidden;
+                .textBg { width: 200px; padding: 2.5px 0; top: 10px; right: -60px; position: absolute; display: none; background-color: var(--c2); transform: rotate(30deg);
+                    &.active { display: flex; }}}
+            .sticker { margin: 10px 0;
+                img { width: calc(20% - 10px); margin: 5px; border-radius: 10px;
+                    &.none { filter: grayscale(100%); opacity: 0.25; }}}
+            .dashH { margin: 10px 0; }
+            .gift { min-width: 100%; max-width: 400px; aspect-ratio: 285/120; margin: 10px auto; padding: 10px 30px 10px 20px; border-radius: 15px; box-sizing: border-box; position: relative; backdrop-filter: blur(30px); background-color: var(--cBg); /* background: linear-gradient(104.62deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%); background-image: url(../img/bg-gift.svg); background-size: contain; background-repeat: no-repeat; */
+                > .flexV {
+                    > *:not(:first) { margin: 5px 0 0 0; }
+                    > .fM { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }}
+                .topLeft { width: 100px; height: 60px; top: 0; left: 0; position: absolute; overflow: hidden;
+                    .textBg { width: 150px; top: 5px; left: -50px; position: absolute; display: none; background-color: var(--cG4); transform: rotate(-30deg);
+                        &.active { display: flex; }
+                        span { line-height: 10px; }}}
+                .fS { margin: 5px 0; }
+                img.photo { min-width: 100px; height: 100px; margin-left: 10px; border-radius: 10px; object-fit: cover; }
+                img.stamp { width: 40px; height: 40px; border-radius: 5px; margin-right: 5px; object-fit: cover; }}
+            .detail { margin: 10px 0;
+                .fL { margin-bottom: 5px; }}}
+        &.footer { box-shadow: none;
+            a { margin: 15px; }
+            .icon.primary { margin-left: 0;
+                i { color: var(--c1) !important; }}}
+        &.popCode {
+            .popMain { padding: 0 5px 5px; margin-bottom: 0 !important;
+                > * { min-height: fit-content; }}
+            .img.profile { width: 60px; height: 60px; min-width: 60px; margin-right: 10px; background-image: url(../img/profile-d.png); background-size: cover;
+                img { border-radius: 10px; }}
+            .refresh { background-color: var(--c1); }
+            .qrcode { padding: 20px 0; margin: 10px 0 0; border-radius: 20px; background-color: white; 
+                .img { width: 250px; height: fit-content; }}
+            .submit { background-color: var(--c1); margin-right: -5px; }}
+        &.popHistory {
+            .popMain { padding: 0 10px;
+                .record { min-height: fit-content; }
+                .record:not(:first-child) { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--cG5); border-radius: 0; }
+                img.stamp { width: 30px; height: 30px; border-radius: 5px; margin-left: 5px; object-fit: cover; }}}
+        &.popGift {
+            .popBody { padding: 0 20px;
+            .popMain { padding: 0; margin: 0; align-items: flex-start; overflow-x: hidden;
+            .detail { margin: 10px 0; }
+            img.photo { width: 100%; aspect-ratio: 1/1; margin: 20px 0; border-radius: 10px; }
+            img.stamp { width: 40px; height: 40px; border-radius: 5px; margin-right: 5px; object-fit: cover; }}}}
+        &.popGiftGet {
+            .popMain { padding: 10px; margin-top: 0;
+            img.photo { width: 100%; aspect-ratio: 1/1; margin-bottom: 20px; border-radius: 10px; }}}}
+
+    .moveIn { animation-name: moveIn; animation-duration: 0.5s; animation-fill-mode: forwards; }
+    .moveOut { animation-name: moveOut; animation-duration: 0.5s; animation-fill-mode: forwards; }
+    @keyframes moveIn { 0% { top: -150px; } 100% { top: 0; }}
+    @keyframes moveOut { 0% { top: 0; } 100% { top: -150px; }}
+    @keyframes popPWA { 0% { margin-bottom: -100%; } 100% { margin-bottom: 30px; }}
+}
