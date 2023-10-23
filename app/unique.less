@@ -105,7 +105,12 @@
         &.popGiftGet {
             .popMain { padding: 10px; margin-top: 0;
             img.photo { width: 100%; aspect-ratio: 1/1; margin-bottom: 20px; border-radius: 10px; }}}}
-
+    .receipt {
+        &.main { width: 100vw; height: calc(100vh - 130px); padding: 60px 0 70px !important;
+            @media @sD, @sT { width: 768px !important; }
+            .button { width: calc(50% - 30px); margin: 20px 5px; }
+            .barcode { width: calc(100% - 20px); padding: 20px 0; margin: auto 10px; border-radius: 20px; background-color: white; 
+                .img { width: 300px; height: 60px; }}}}
     .moveIn { animation-name: moveIn; animation-duration: 0.5s; animation-fill-mode: forwards; }
     .moveOut { animation-name: moveOut; animation-duration: 0.5s; animation-fill-mode: forwards; }
     @keyframes moveIn { 0% { top: -150px; } 100% { top: 0; }}

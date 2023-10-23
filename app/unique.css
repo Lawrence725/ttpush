@@ -466,6 +466,31 @@
   margin-bottom: 20px;
   border-radius: 10px;
 }
+.body .receipt.main {
+  width: 100vw;
+  height: calc(100vh - 130px);
+  padding: 60px 0 70px !important;
+}
+@media (min-width: 1024px), (max-width: 1023px) and (min-width: 768px) {
+  .body .receipt.main {
+    width: 768px !important;
+  }
+}
+.body .receipt.main .button {
+  width: calc(50% - 30px);
+  margin: 20px 5px;
+}
+.body .receipt.main .barcode {
+  width: calc(100% - 20px);
+  padding: 20px 0;
+  margin: auto 10px;
+  border-radius: 20px;
+  background-color: white;
+}
+.body .receipt.main .barcode .img {
+  width: 300px;
+  height: 60px;
+}
 .body .moveIn {
   animation-name: moveIn;
   animation-duration: 0.5s;
