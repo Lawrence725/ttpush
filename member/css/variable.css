@@ -1,0 +1,31 @@
+/* color */
+/* font family */
+html {
+  --fXXXL: 2.4rem;
+  --fXXL: 1.9rem;
+  --fXL: 1.4rem;
+  --fL: 1.2rem;
+  --fM: 1rem;
+  --fS: 0.8rem;
+  --fXS: 0.6rem;
+}
+html:lang(en-US) {
+  --fXXXL: 2.3rem;
+  --fXXL: 1.8rem;
+  --fXL: 1.3rem;
+  --fL: 1.1rem;
+  --fM: 0.9rem;
+  --fS: 0.7rem;
+  --fXS: 0.5rem;
+}
+html:lang(zh-TW) {
+  --fXXXL: 2.4rem;
+  --fXXL: 1.9rem;
+  --fXL: 1.4rem;
+  --fL: 1.2rem;
+  --fM: 1rem;
+  --fS: 0.8rem;
+  --fXS: 0.6rem;
+}
+/* padding box */
+/* img url */
